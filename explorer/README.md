@@ -1,6 +1,6 @@
 # Schema Explorer Service
 
-The **Schema Explorer Service** is the "Librarian" of Project Antigravity. It wraps the Weaviate Vector Database and exposes tools to navigate the database schema as a Knowledge Graph.
+The **Schema Explorer Service** is the "Librarian" of Project Curiosity. It wraps the Weaviate Vector Database and exposes tools to navigate the database schema as a Knowledge Graph.
 
 ## Responsibilities
 - Semantic search (Vector + Keyword)

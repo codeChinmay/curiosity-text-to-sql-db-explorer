@@ -11,6 +11,7 @@ class AgentState(TypedDict):
     The 'Schema Scratchpad' state for the orchestration agent.
     """
     input_query: str
+    search_query: Optional[str]
     
     # Scratchpad
     relevant_tables: List[TableSchema]

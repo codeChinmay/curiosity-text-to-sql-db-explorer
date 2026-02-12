@@ -1,6 +1,6 @@
-# Text-to-SQL DB Analyzer
+# Text-to-SQL DB Explorer
 
-Project Antigravity: A microservices-based system to analyze database schemas and generate SQL from natural language questions using AI agents.
+Project Curiosity: A microservices-based system to analyze database schemas and generate SQL from natural language questions using AI agents.
 
 ## Architecture
 

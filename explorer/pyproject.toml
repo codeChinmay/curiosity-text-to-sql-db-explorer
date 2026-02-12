@@ -1,9 +1,9 @@
 [project]
 name = "explorer"
 version = "0.1.0"
-description = "Antigravity Schema Explorer Service"
+description = "Curiosity Schema Explorer Service"
 authors = [
-    {name = "Antigravity Team", email = "antigravity@example.com"}
+    {name = "Curiosity Team", email = "curiosity@example.com"}
 ]
 dependencies = [
     "fastapi>=0.100.0",

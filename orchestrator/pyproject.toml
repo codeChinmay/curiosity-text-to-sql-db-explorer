@@ -1,9 +1,9 @@
 [project]
 name = "orchestrator"
 version = "0.1.0"
-description = "Antigravity Orchestrator Service"
+description = "Curiosity Orchestrator Service"
 authors = [
-    {name = "Antigravity Team", email = "antigravity@example.com"}
+    {name = "Curiosity Team", email = "curiosity@example.com"}
 ]
 dependencies = [
     "langgraph>=0.0.1",

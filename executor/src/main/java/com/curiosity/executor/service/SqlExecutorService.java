@@ -1,4 +1,4 @@
-package com.antigravity.executor.service;
+package com.curiosity.executor.service;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;

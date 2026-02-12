@@ -1,7 +1,7 @@
-package com.antigravity.executor.controller;
+package com.curiosity.executor.controller;
 
-import com.antigravity.executor.service.DatabaseInspector;
-import com.antigravity.executor.service.SqlExecutorService;
+import com.curiosity.executor.service.DatabaseInspector;
+import com.curiosity.executor.service.SqlExecutorService;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -31,7 +31,7 @@ public class MCPController {
 
     @PostMapping("/refresh_schema_metadata")
     public List<Map<String, Object>> refreshSchemaMetadata(@RequestBody Map<String, String> payload) throws SQLException {
-        // In a real scenario, payload would contain sourceId.
+        // In future, payload would contain sourceId.
         // For now, we refresh the default datasource schema.
         return databaseInspector.extractSchemaMetadata();
     }

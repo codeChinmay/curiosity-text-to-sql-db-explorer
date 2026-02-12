@@ -35,29 +35,28 @@ class Agent:
         query = state.get('input_query')
         print(f"Planning for query: {query}")
         
-        # Simple planning: just identifying intent, but for now passing through.
-        # Ideally we ask LLM to extract keywords for search.
+        # Ask LLM to extract keywords and refine intent for search
         messages = [
-            SystemMessage(content="You are a database expert. Extract the key terms from the user query to search for relevant database tables. Return just the terms as a comma-separated list."),
+            SystemMessage(content="You are a database expert. Your goal is to generate a search query to find the most relevant tables for the user's request. Return a set of keywords and related domain concepts that will maximize the chances of a vector search match. Return just the space-separated terms."),
             HumanMessage(content=query)
         ]
         
         try:
             response = await self.llm.ainvoke(messages)
             plan = response.content
-            print(f"Plan keywords: {plan}")
-            return {"reasoning_log": [f"Plan: Search for {plan}"]}
+            print(f"Generated search plan: {plan}")
+            return {"search_query": plan, "reasoning_log": [f"Plan: Search for '{plan}'"]}
         except Exception as e:
             print(f"Planning failed: {e}")
-            return {"reasoning_log": [f"Planning failed: {e}"]}
+            return {"reasoning_log": [f"Planning failed: {e}"], "search_query": query}
 
     async def explore_step(self, state: AgentState):
         print("Searching schema...")
-        query = state.get('input_query')
+        # Use refined search query if available
+        query = state.get('search_query') or state.get('input_query')
+        print(f"Using search query: {query}")
+        
         try:
-            # We search using the original query + potential plan context
-            # For simplicity, just use the query directly for hybrid search
-            # (In a real app, use the keywords from plan)
             results = await search_schema(query, limit=5)
             
             # Filter solely based on some heuristic or take top N
@@ -137,6 +136,7 @@ class Agent:
     async def run(self, input_query: str):
         inputs = {
             "input_query": input_query, 
+            "search_query": "",
             "relevant_tables": [], 
             "reasoning_log": [], 
             "sql_query": "", 

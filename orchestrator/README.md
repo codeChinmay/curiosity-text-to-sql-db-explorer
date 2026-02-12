@@ -1,6 +1,6 @@
 # Orchestrator Service
 
-The **Orchestrator Service** is the "Brain" of Project Antigravity. It holds the user session, maintains the "Schema Scratchpad," and drives the reasoning loop using LangGraph.
+The **Orchestrator Service** is the "Brain" of Project Curiosity. It holds the user session, maintains the "Schema Scratchpad," and drives the reasoning loop using LangGraph.
 
 ## Responsibilities
 - Reasoning about user queries

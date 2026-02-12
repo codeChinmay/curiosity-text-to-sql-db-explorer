@@ -1,4 +1,4 @@
-package com.antigravity.executor.service;
+package com.curiosity.executor.service;
 
 import org.springframework.stereotype.Service;
 import javax.sql.DataSource;

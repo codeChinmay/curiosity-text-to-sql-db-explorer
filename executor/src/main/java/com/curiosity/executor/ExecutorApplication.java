@@ -1,4 +1,4 @@
-package com.antigravity.executor;
+package com.curiosity.executor;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,9 +18,9 @@ public class ExecutorApplication {
 class SqlExecutorController {
 
     private final org.springframework.jdbc.core.JdbcTemplate jdbcTemplate;
-    private final com.antigravity.executor.service.DatabaseInspector databaseInspector;
+    private final com.curiosity.executor.service.DatabaseInspector databaseInspector;
 
-    public SqlExecutorController(org.springframework.jdbc.core.JdbcTemplate jdbcTemplate, com.antigravity.executor.service.DatabaseInspector databaseInspector) {
+    public SqlExecutorController(org.springframework.jdbc.core.JdbcTemplate jdbcTemplate, com.curiosity.executor.service.DatabaseInspector databaseInspector) {
         this.jdbcTemplate = jdbcTemplate;
         this.databaseInspector = databaseInspector;
     }
