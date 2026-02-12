@@ -7,7 +7,6 @@ from .ingestion_pipeline import IngestionPipeline
 app = FastAPI()
 
 # Initialize components
-# Note: Ensure Weaviate is running before starting the server or handle connection errors gracefully in components
 explorer = SchemaExplorer()
 pipeline = IngestionPipeline()
 

@@ -4,6 +4,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.RequestBody; 
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.curiosity.executor.service.DatabaseInspector;
+import com.curiosity.executor.service.SqlExecutorService;
+
+import java.util.List;
+import java.util.Map;
 
 @SpringBootApplication
 public class ExecutorApplication {
@@ -14,15 +24,17 @@ public class ExecutorApplication {
 }
 
 @RestController
-@org.springframework.web.bind.annotation.RequestMapping("/mcp")
+@RequestMapping("/mcp")
 class SqlExecutorController {
 
-    private final org.springframework.jdbc.core.JdbcTemplate jdbcTemplate;
-    private final com.curiosity.executor.service.DatabaseInspector databaseInspector;
+    private final JdbcTemplate jdbcTemplate;
+    private final DatabaseInspector databaseInspector;
+    private final SqlExecutorService sqlExecutorService;
 
-    public SqlExecutorController(org.springframework.jdbc.core.JdbcTemplate jdbcTemplate, com.curiosity.executor.service.DatabaseInspector databaseInspector) {
+    public SqlExecutorController(JdbcTemplate jdbcTemplate, DatabaseInspector databaseInspector, SqlExecutorService sqlExecutorService) {
         this.jdbcTemplate = jdbcTemplate;
         this.databaseInspector = databaseInspector;
+        this.sqlExecutorService = sqlExecutorService;
     }
 
     @GetMapping("/status")
@@ -31,18 +43,18 @@ class SqlExecutorController {
     }
 
     @GetMapping("/inspect_schema")
-    public java.util.List<java.util.Map<String, Object>> inspectSchema() {
+    public List<Map<String, Object>> inspectSchema() {
         try {
             return databaseInspector.extractSchemaMetadata();
         } catch (Exception e) {
-             java.util.Map<String, Object> error = new java.util.HashMap<>();
+             Map<String, Object> error = new HashMap<>();
              error.put("error", e.getMessage());
-             return java.util.Collections.singletonList(error);
+             return Collections.singletonList(error);
         }
     }
 
-    @org.springframework.web.bind.annotation.PostMapping("/execute_sql_query")
-    public java.util.List<java.util.Map<String, Object>> executeQuery(@org.springframework.web.bind.annotation.RequestBody SqlRequest request) {
+    @PostMapping("/execute_sql_query")
+    public List<Map<String, Object>> executeQuery(@RequestBody  SqlRequest request) {
         String sql = request.sql();
         if (sql == null || sql.trim().isEmpty()) {
             throw new IllegalArgumentException("SQL query cannot be empty");
@@ -53,11 +65,11 @@ class SqlExecutorController {
         
         System.out.println("Executing SQL: " + sql);
         try {
-            return jdbcTemplate.queryForList(sql);
+            return sqlExecutorService.executeQuery(sql);
         } catch (Exception e) {
-            java.util.Map<String, Object> error = new java.util.HashMap<>();
+            Map<String, Object> error = new HashMap<>();
             error.put("error", e.getMessage());
-            return java.util.Collections.singletonList(error);
+            return Collections.singletonList(error);
         }
     }
 

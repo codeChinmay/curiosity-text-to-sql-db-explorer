@@ -31,6 +31,8 @@ docker-compose up -d
 
 Copy `.env.example` to `.env` in `orchestrator/` and `explorer/` directories and add your `OPENAI_API_KEY`.
 
+use copy .env.example .env
+
 ### 3. Run Services
 
 **Executor (Terminal 1):**
