@@ -1,0 +1,22 @@
+[project]
+name = "orchestrator"
+version = "0.1.0"
+description = "Antigravity Orchestrator Service"
+authors = [
+    {name = "Antigravity Team", email = "antigravity@example.com"}
+]
+dependencies = [
+    "langgraph>=0.0.1",
+    "langchain>=0.1.0",
+    "mcp>=0.1.0",
+    "httpx>=0.24.0",
+    "langchain_openai>=0.0.1",
+    "python-dotenv>=1.0.0"
+]
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

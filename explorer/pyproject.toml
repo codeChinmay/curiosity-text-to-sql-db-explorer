@@ -1,0 +1,23 @@
+[project]
+name = "explorer"
+version = "0.1.0"
+description = "Antigravity Schema Explorer Service"
+authors = [
+    {name = "Antigravity Team", email = "antigravity@example.com"}
+]
+dependencies = [
+    "fastapi>=0.100.0",
+    "weaviate-client>=4.4.0",
+    "mcp>=0.1.0",
+    "openai>=1.0.0",
+    "httpx>=0.24.0",
+    "uvicorn>=0.20.0",
+    "python-dotenv>=1.0.0"
+]
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
