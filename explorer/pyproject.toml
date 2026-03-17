@@ -3,7 +3,7 @@ name = "explorer"
 version = "0.1.0"
 description = "Curiosity Schema Explorer Service"
 authors = [
-    {name = "Curiosity Team", email = "curiosity@example.com"}
+    {name = "Chinmay Shiralkar"}
 ]
 dependencies = [
     "fastapi>=0.100.0",

@@ -3,7 +3,7 @@ name = "orchestrator"
 version = "0.1.0"
 description = "Curiosity Orchestrator Service"
 authors = [
-    {name = "Curiosity Team", email = "curiosity@example.com"}
+    {name = "Chinmay Shiralkar"}
 ]
 dependencies = [
     "langgraph>=0.0.1",
